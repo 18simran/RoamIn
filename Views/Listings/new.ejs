@@ -1,0 +1,92 @@
+<% layout('layouts/boilerplate') %>
+
+<body>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <br />
+
+      <h3>Create a New Listing</h3>
+      <br />
+      <form
+        method="POST"
+        action="/listings/listingsall/new"
+        novalidate
+        class="needs-validation"
+        enctype="multipart/form-data"
+      >
+        <div class="mb-3">
+          <label for="title" class="form-label">Title </label>
+          <input
+            class="form-control"
+            id="title"
+            name="title"
+            type="text"
+            placeholder="Add title"
+            required
+          />
+          <div class="invalid-feedback">Title missing</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Description </label>
+          <textarea class="form-control" name="description" required></textarea>
+          <div class="invalid-feedback">Detailed description requires</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="image">Upload image </label>
+          <input
+            class="form-control"
+            id="image"
+            name="listing[image]"
+            placeholder="Add image link"
+            type="file"
+          />
+        </div>
+
+        <div class="row">
+          <div class="mb-3 col-4">
+            <label for="price" class="form-label">Price </label>
+            <input
+              class="form-control"
+              id="price"
+              name="price"
+              placeholder="Add price.."
+              required
+            />
+            <div class="invalid-feedback">Price missing</div>
+          </div>
+
+          <div class="mb-3 col-8">
+            <label for="country" class="form-label">Country </label>
+            <input
+              id="country"
+              name="country"
+              placeholder="Add Country.."
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Country missing</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="location" class="form-label">Location </label>
+          <input
+            id="location"
+            name="location"
+            placeholder="Add Location.."
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Location missing</div>
+        </div>
+        <br />
+        <button class="btn btn-dark add-btn">Submit</button>
+        <br />
+        <br />
+        <br />
+      </form>
+    </div>
+  </div>
+</body>

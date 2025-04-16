@@ -1,0 +1,41 @@
+<% layout("/Layouts/boilerplate") %>
+
+<div class="row mt-3">
+  <h1 class="col-md-8 offset-md-2 mb-3">Login for RoamIn</h1>
+
+  <div class="col-md-6 col-sm-8 offset-md-3">
+    <form
+      action="/listings/login"
+      method="POST"
+      novalidate
+      class="needs-validation"
+    >
+      <div class="mb-3">
+        <label for="username" class="form-label">Username </label>
+        <input
+          class="form-control"
+          id="username"
+          name="username"
+          type="text"
+          required
+        />
+        <div class="invalid-feedback">Username missing</div>
+        <div class="valid-feedback">Looks Good!</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password </label>
+        <input
+          class="form-control"
+          id="password"
+          name="password"
+          type="password"
+          required
+        />
+        <div class="invalid-feedback">Password missing</div>
+        <div class="valid-feedback">Looks Good!</div>
+      </div>
+      <button class="btn btn-md btn-success">LogIn</button>
+    </form>
+  </div>
+</div>

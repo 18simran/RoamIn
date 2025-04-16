@@ -1,0 +1,134 @@
+:root {
+  --main-color: #fffbef;
+}
+body {
+  background-color: var(--main-color);
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.container {
+  flex: 1;
+  /* If .container is a direct child of body, flex: 1; makes it expand and take up all remaining space between the header and footer. */
+}
+/* navbar */
+.navbar {
+  height: 5rem;
+  background-color: var(--main-color);
+}
+
+.fa-compass {
+  color: #008080;
+  font-size: 2rem;
+}
+.nav-link {
+  color: #222222 !important;
+}
+/* footer */
+.f-info-links a {
+  text-decoration: none;
+  color: #008080;
+  margin-right: 0.4rem;
+}
+.f-info-links a:hover {
+  text-decoration: underline;
+}
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #008080;
+}
+
+.f-info-socials i {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  color: #008080;
+}
+.f-info {
+  text-align: center;
+  height: 8rem;
+  background-color: #c4ebe4;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: space-evenly;
+}
+/* cards */
+.listing-card {
+  border: none;
+  margin-bottom: 2rem;
+  background-color: var(--main-color);
+}
+.card-img-top {
+  border-radius: 1rem !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+.card-body {
+  padding: 0 !important;
+}
+.card-text {
+  font-weight: 400 !important;
+}
+.listing-link {
+  text-decoration: none;
+}
+/* card Effect */
+.card-img-overlay {
+  opacity: 0;
+}
+.card-img-overlay:hover {
+  opacity: 0.2;
+  background-color: white;
+}
+
+/* new.ejs file */
+.form-label {
+  font-weight: bold;
+}
+.form-control {
+  background-color: var(--main-color);
+}
+.add-btn,
+.edit-btn,
+.dlt-btn {
+  background-color: #008080;
+  border: none;
+}
+.add-btn:hover,
+.edit-btn:hover {
+  background-color: #136c6c;
+}
+.dlt-btn {
+  padding: 10px 30px;
+}
+.edit-btn {
+  padding: 10px;
+  width: 130px;
+}
+/* list.ejs */
+.show-img {
+  height: 40vh;
+}
+.btns {
+  display: flex;
+}
+.show-card {
+  padding-left: 0;
+  padding-right: 0;
+}
+.review-card {
+  background-color: var(--main-color);
+}
+.review-btn {
+  background-color: #008080;
+  color: white;
+}
+.review-btn:hover {
+  background-color: #136c6c;
+}

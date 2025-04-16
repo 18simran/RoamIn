@@ -1,0 +1,87 @@
+<% layout('layouts/boilerplate') %>
+<div class="row mt-3">
+  <div class="col-md-7 offset-md-2 offset-md-1">
+    <br />
+    <h2>Edit</h2>
+    <form
+      method="POST"
+      action="/listings/listingsall/<%= listData._id %>/edit?_method=PUT"
+      novalidate
+      class="needs-validation"
+    >
+      <br />
+      <div class="mb-3">
+        <label for="title" class="form-label">Title : </label>
+        <input
+          id="title"
+          name="title"
+          placeholder="Add title"
+          value="<%= listData.title %>"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback"></div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description : </label>
+        <textarea class="form-control" rows="3" name="description">
+<%= listData.description  %></textarea
+        >
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="image">Add image : </label>
+        <input
+          id="image"
+          value="<%= listData.image %>"
+          name="image"
+          placeholder="Add image link"
+          class="form-control"
+        />
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label class="form-label" for="price">Price : </label>
+          <input
+            id="price"
+            type="number"
+            name="price"
+            value="<%= listData.price %>"
+            placeholder="Add price.."
+            class="form-control"
+          />
+        </div>
+
+        <div class="mb-3 col-md-8">
+          <label class="form-label" for="location">Location : </label>
+          <input
+            id="location"
+            name="location"
+            placeholder="Add Location.."
+            value="<%= listData.location %>"
+            class="form-control"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="country">Country : </label>
+        <input
+          id="country"
+          name="country"
+          placeholder="Add Country.."
+          value="<%= listData.country %>"
+          class="form-control"
+        />
+      </div>
+
+      <button class="btn btn-md btn-dark edit-btn mt-3">
+        &nbsp; Edit &nbsp;
+      </button>
+      <br />
+      <br />
+    </form>
+  </div>
+</div>

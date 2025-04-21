@@ -1,4 +1,4 @@
-const Listing = require("../RoamIn/Models/listing");
+const Listing = require("./Models/listing");
 const Review = require("./Models/reviews");
 module.exports.isLoggedin = (req, res, next) => {
   if (!req.isAuthenticated()) {

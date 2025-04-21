@@ -4,15 +4,20 @@ const ExpressError = require("../utils/ExpressError");
 const Review = require("../Models/reviews");
 const Listing = require("../Models/listing");
 
-const mainRoute = (req, res) => {
-  res.send("This is Home page ");
-  console.log("I am root");
-};
-
 const allListings = async (req, res) => {
-  const listings = await Listing.find({});
+  const { location } = req.query;
+  let listings;
+
+  if (location) {
+    listings = await Listing.find({
+      location: { $regex: location, $options: "i" },
+    });
+  } else {
+    listings = await Listing.find({});
+  }
   res.render("Listings/index", { listings });
 };
+
 //show route
 const showList = async (req, res) => {
   const id = req.params.id;
@@ -50,35 +55,34 @@ const createListing = wrapAsync(async (req, res) => {
 //edit Form
 const editForm = async (req, res) => {
   const id = req.params.id;
-  const listData = await Listing.findById(`${id}`);
+  const listData = await Listing.findById(id);
   if (!listData) {
     req.flash("error", "Listing you requested for doesn't exist");
     res.redirect("/listings/listingsall");
   }
-
-  res.render("Listings/edit", { listData });
+  console.log(listData);
+  let original_img_url = listData.image.url;
+  original_img_url = original_img_url.replace("/upload", "/upload/w_250");
+  console.log(original_img_url);
+  res.render("Listings/edit", { listData, original_img_url });
 };
 //edit Listing
 const editList = async (req, res) => {
-  const id = req.params.id;
-  const { title, description, image, price, location, country } = req.body;
-
-  if (!title || !description || !image || !price || !location || !country) {
-    throw new ExpressError(400, "update not valid");
-  }
+  let id = req.params.id;
   let editList = await Listing.findByIdAndUpdate(
-    `${id}`,
+    id,
     {
-      title: title,
-      description: description,
-      image: image,
-      price: price,
-      location: location,
-      country: country,
+      ...req.body,
     },
     { runValidators: true }
   );
-  editList.save();
+  console.log(req.file);
+  if (typeof req.file !== "undefined") {
+    let url = req.file.path;
+    let filename = req.file.filename;
+    editList.image = { url, filename };
+    await editList.save();
+  }
   req.flash("success", "Listing Updated");
   res.redirect(`/listings/listingsall/${id}`);
 };
@@ -110,8 +114,8 @@ const deleteReview = wrapAsync(async (req, res) => {
   req.flash("success", "Review deleted");
   res.redirect(`/listings/listingsall/${id}`);
 });
+
 module.exports = {
-  mainRoute,
   allListings,
   showList,
   getForm,

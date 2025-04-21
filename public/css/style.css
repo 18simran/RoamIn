@@ -14,7 +14,6 @@ body {
 }
 /* navbar */
 .navbar {
-  height: 5rem;
   background-color: var(--main-color);
 }
 
@@ -131,4 +130,115 @@ body {
 }
 .review-btn:hover {
   background-color: #136c6c;
+}
+/* navbar */
+.search-input {
+  border-radius: 25px;
+  padding: 0.5rem 3rem;
+}
+
+/* index.js */
+.tax-toggle {
+  margin-top: 1rem;
+  border: 1px solid black;
+  border-radius: 1rem;
+  height: 4rem;
+  padding: 1rem;
+}
+#filters {
+  display: flex;
+  justify-content: space-between;
+}
+.filters-all {
+  display: flex;
+  flex-wrap: wrap;
+}
+.filter {
+  text-align: center;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  opacity: 0.7;
+}
+.filter p {
+  font-size: 0.8rem;
+}
+.filter:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.form-check-input {
+  cursor: pointer;
+}
+.tax-info {
+  display: none;
+}
+
+/* media queries */
+@media (min-width: 580px) and (max-width: 768px) {
+  .filter {
+    margin-right: 0.5rem;
+    margin-top: 0.2rem;
+    width: 3.5rem;
+  }
+  .form-check-label {
+    font-size: 1rem;
+  }
+  .tax-toggle {
+    margin-top: 1rem;
+    height: 8.5rem;
+    padding: 0.5rem;
+  }
+  .search-input {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+  }
+  .btn-search {
+    font-size: 0.8rem;
+  }
+  .navbar-toggler-icon {
+    width: 1.2em;
+    height: 1.2em;
+  }
+  .cards-container .listing-card {
+    width: 14rem;
+    height: 20rem;
+  }
+  .listing-view .listing-card {
+    width: 20rem;
+  }
+}
+@media (min-width: 200px) and (max-width: 580px) {
+  .filter {
+    margin-right: 0.5rem;
+    margin-top: 0.2rem;
+    width: 3.5rem;
+  }
+  .form-check-label {
+    font-size: 1rem;
+  }
+  .tax-toggle {
+    margin-top: 1rem;
+    height: 8.5rem;
+    padding: 0.5rem;
+  }
+  .search-input {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+  }
+  .btn-search {
+    font-size: 0.8rem;
+  }
+  .navbar-toggler-icon {
+    width: 1.2em;
+    height: 1.2em;
+  }
+  .logo {
+    font-size: 1.5rem;
+  }
+  .show-card,
+  .review-part {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }

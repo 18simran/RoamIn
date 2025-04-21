@@ -11,9 +11,23 @@ const userRoutes = require("./Routes/userRoute");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./Models/user");
+const MongoStore = require("connect-mongo");
 const session = require("express-session");
+const dbUrl = process.env.ATLASDB_URL;
+const secretKey = process.env.SECRET;
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  crypto: {
+    secret: secretKey,
+  },
+  touchAfter: 24 * 3600,
+});
+store.on("error", () => {
+  console.log("mongo session error", err);
+});
 const sessionOptions = {
-  secret: "mysupersecretstring",
+  store,
+  secret: secretKey,
   resave: false,
   saveUninitialized: true,
   cookie: {

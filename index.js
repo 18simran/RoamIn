@@ -8,8 +8,10 @@ const Listing = require("./Models/listing");
 const initdata = require("./data");
 const port = 5000;
 // Database Connection
+const dbUrl = process.env.ATLASDB_URL;
+
 async function main() {
-  await mongoose.connect("mongodb://localhost:27017/RoamIn");
+  await mongoose.connect(dbUrl);
 }
 main()
   .then(() => console.log("Connected to MongoDB"))

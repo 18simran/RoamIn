@@ -7,7 +7,6 @@ const multer = require("multer");
 const { storage } = require("../cloudConfiq.js");
 const upload = multer({ storage });
 const {
-  mainRoute,
   allListings,
   getForm,
   showList,
@@ -27,7 +26,7 @@ const validateListing = (req, res, next) => {
     next();
   }
 };
-router.get("/", mainRoute);
+
 router.get("/listingsall", allListings);
 router
   .route("/listingsall/new")
@@ -38,8 +37,6 @@ router
     validateListing,
     createListing
   );
-// router.get("/listingsall/new", getForm);
-// router.post("/listingsall/new", validateListing, createListing);
 router
   .route("/listingsall/:id")
   .get(showList)
@@ -47,5 +44,5 @@ router
 router
   .route("/listingsall/:id/edit")
   .get(isLoggedin, isOwner, editForm)
-  .put(editList);
+  .put(isLoggedin, isOwner, upload.single("listing[image]"), editList);
 module.exports = router;

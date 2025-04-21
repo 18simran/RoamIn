@@ -8,6 +8,7 @@
       action="/listings/listingsall/<%= listData._id %>/edit?_method=PUT"
       novalidate
       class="needs-validation"
+      enctype="multipart/form-data"
     >
       <br />
       <div class="mb-3">
@@ -31,12 +32,16 @@
       </div>
 
       <div class="mb-3">
+        <span><b>original listing image :</b></span>
+        <br /><br />
+        <img src="<%= original_img_url %>" src="preview of image" />
+      </div>
+      <div class="mb-3">
         <label class="form-label" for="image">Add image : </label>
         <input
           id="image"
-          value="<%= listData.image %>"
-          name="image"
-          placeholder="Add image link"
+          type="file"
+          name="listing[image]"
           class="form-control"
         />
       </div>

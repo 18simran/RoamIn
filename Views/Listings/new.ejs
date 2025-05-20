@@ -82,7 +82,20 @@
           />
           <div class="invalid-feedback">Location missing</div>
         </div>
-        <br />
+
+        <div class="mb-3">
+          <label for="category" class="form-label">Category</label>
+          <select id="category" name="category" class="form-select" required>
+            <option value="">-- Select a Category --</option>
+            <option value="ChicGateways">Chic Gateways</option>
+            <option value="smartStays">Smart Stays</option>
+            <option value="culturalEscapes">Cultural Escapes</option>
+            <option value="scenicViews">Scenic Views</option>
+            <option value="adventureGear">Adventure Gear</option>
+            <!-- Add more categories if needed -->
+          </select>
+          <div class="invalid-feedback">Category is required</div>
+        </div>
         <button class="btn btn-dark add-btn">Submit</button>
         <br />
         <br />

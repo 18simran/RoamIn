@@ -40,18 +40,42 @@ const getForm = async (req, res) => {
   res.render("Listings/new");
 };
 //create Listing
+// const createListing = wrapAsync(async (req, res) => {
+//   let url = req.file.path;
+//   let filename = req.file.filename;
+//   console.log(url + " " + filename);
+//   const addNewList = new Listing(req.body);
+//   addNewList.owner = req.user._id;
+//   addNewList.image = { url, filename };
+//   await addNewList.save();
+//   // res.send(req.file);
+//   req.flash("success", "New Listing created");
+//   res.redirect("/listings/listingsall");
+// });
 const createListing = wrapAsync(async (req, res) => {
-  let url = req.file.path;
-  let filename = req.file.filename;
-  console.log(url + " " + filename);
-  const addNewList = new Listing(req.body);
-  addNewList.owner = req.user._id;
-  addNewList.image = { url, filename };
-  await addNewList.save();
-  // res.send(req.file);
-  req.flash("success", "New Listing created");
-  res.redirect("/listings/listingsall");
+  try {
+    let url = req.file.path;
+    let filename = req.file.filename;
+    const { title, description, category, price, location, country } = req.body;
+    const addNewList = new Listing({
+      title,
+      description,
+      category,
+      price,
+      location,
+      country,
+      owner: req.user._id,
+      image: { url, filename },
+    });
+    await addNewList.save();
+    req.flash("success", "New Listing created");
+    res.redirect("/listings/listingsall");
+  } catch (error) {
+    console.error("Error in createListing:", error);
+    throw error;
+  }
 });
+
 //edit Form
 const editForm = async (req, res) => {
   const id = req.params.id;

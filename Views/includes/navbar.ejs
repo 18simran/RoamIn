@@ -1,4 +1,4 @@
-<style>
+<!-- <style>
   .btn-search {
     background-color: #008080;
     color: white;
@@ -19,7 +19,7 @@
     class="container-fluid d-flex align-items-center justify-content-between"
   >
     <div class="d-flex align-items-center">
-      <a class="navbar-brand" href="/listings/listingsall">
+      <a class="navbar-brand" href="/">
         <i class="fa-regular fa-compass logo"></i>
       </a>
     </div>
@@ -61,6 +61,89 @@
         <a class="nav-link" href="/listings/signup"><b>SignUp</b></a>
         <a class="nav-link" href="/listings/login"><b>LogIn</b></a>
         <% } %> <% if(currUser) { %>
+        <a class="nav-link" href="/listings/logout">LogOut</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav> -->
+
+<style>
+  .btn-search {
+    background-color: #008080;
+    color: white;
+    border-radius: 25px;
+    padding: 0 1rem;
+  }
+  .btn-search:hover {
+    background-color: #139595;
+    color: white;
+  }
+  .btn-search i {
+    display: inline;
+    margin-right: 0.5rem;
+  }
+</style>
+
+<nav class="navbar sticky-top navbar-expand-lg bg-body-light border-bottom">
+  <div
+    class="container-fluid d-flex align-items-center justify-content-between"
+  >
+    <div class="d-flex align-items-center">
+      <a class="navbar-brand" href="/">
+        <i class="fa-regular fa-compass logo"></i>
+      </a>
+    </div>
+
+    <div class="flex-grow-1 d-flex justify-content-center">
+      <form
+        class="d-flex search-bar"
+        role="search"
+        action="/listings/listingsall"
+        method="get"
+      >
+        <input
+          class="form-control me-2 search-input"
+          type="text"
+          placeholder="Search Destinations"
+          name="location"
+          aria-label="Search Destinations"
+        />
+        <button class="btn btn-search" type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i><span>Search</span>
+        </button>
+      </form>
+    </div>
+
+    <div class="d-flex align-items-center">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/listings/listingsall">Explore</a>
+        <a class="nav-link" href="/listings/listingsall/new">Add new Listing</a>
+
+        <!-- <% if (!currUser) { %>
+        <a class="nav-link" href="/listings/signup"><b>SignUp</b></a>
+        <a class="nav-link" href="/listings/login"><b>LogIn</b></a>
+        <% } else { %>
+        <a class="nav-link" href="/listings/logout">LogOut</a>
+        <% } %> -->
+        <% if(!currUser) { %>
+        <a class="nav-link" href="/listings/signup"><b>SignUp</b></a>
+        <a class="nav-link" href="/listings/login"><b>LogIn</b></a>
+        <% } else { %>
         <a class="nav-link" href="/listings/logout">LogOut</a>
         <% } %>
       </div>

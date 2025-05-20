@@ -9,6 +9,7 @@ const ExpressError = require("./utils/ExpressError");
 const listingRoutes = require("./Routes/listingRoute");
 const reviewRoutes = require("./Routes/reviewRoute");
 const userRoutes = require("./Routes/userRoute");
+const homepageRoutes = require("./Routes/homepageRoute");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./Models/user");
@@ -98,6 +99,7 @@ app.get("/hello", (req, res) => {
   res.render("page.ejs", { name: req.session.name });
 });
 // Routes
+app.use("/", homepageRoutes);
 app.use("/listings", listingRoutes);
 app.use("/listings", reviewRoutes);
 app.use("/listings", userRoutes);

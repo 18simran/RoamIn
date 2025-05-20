@@ -10,6 +10,10 @@ const listingSchema = new mongoose.Schema({
   description: {
     type: String,
   },
+  category: {
+    type: String,
+    required: true,
+  },
   image: {
     url: String,
     filename: String,
